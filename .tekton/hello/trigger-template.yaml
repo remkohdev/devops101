@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: hello-trigger-template
+spec:
+  resources:
+	- name: source-repo
+	  resourceSpec:
+	    type: git
+	    params:
+		  - name: revision
+		    value: master
+		  - name: url
+		    value: https://github.com/remkohdev/spring-boot-app
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1alpha1
+      kind: PipelineRun
+      metadata:
+        name: pipelinerun-$(uid)
+      spec:
+        pipelineRef:
+		  name: hello-pipeline

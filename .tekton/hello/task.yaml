@@ -1,0 +1,49 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: hello-task
+spec:
+  steps:
+    - name: echo
+      image: ubuntu
+      command:
+        - echo
+      args:
+        - "hello world"
+---
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: source-to-image-task
+spec:
+  inputs:
+    resources:
+      - name: git-source
+        type: git
+    params:
+      - name: pathToDockerFile
+        type: string 
+        description: path to dockerfile
+        default: Dockerfile
+      - name: pathToContext
+        type: string
+        description: path to context
+        default: .
+      - name: imageUrl
+        description: url of image repository
+        default: docker.io/remkohdev/spring-boot-app
+      - name: imageTag
+        description: image tag
+        default: latest
+  steps:
+    - name: executor
+      image: gcr.io/kaniko-project/executor:latest
+      command:
+        - /kaniko/executor
+      args:
+        - --dockerfile=${inputs.params.pathToDockerFile}
+        - --destination=${inputs.params.imageUrl}:${inputs.params.imageTag}
+        - --context=/workspace/git-source/${inputs.params.pathToContext}
+      env:
+      - name: DOCKER_CONFIG
+        value: /tekton/home/.docker/

@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: hello-trigger-binding
+spec:
+  params:
+    - name: repository
+      value: "https://github.com/remkohdev/spring-boot-app"
+    - name: branch
+      value: "master"
