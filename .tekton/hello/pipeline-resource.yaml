@@ -4,9 +4,9 @@ metadata:
   name: source-repo
 spec:
   resourceSpec:
-	type: git
-	params:
-	- name: revision
-	  value: master
-	- name: url
-	  value: https://github.com/remkohdev/devops101
+    type: git
+    params:
+    - name: revision
+      value: master
+    - name: url
+      value: https://github.com/remkohdev/devops101
