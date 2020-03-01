@@ -9,4 +9,4 @@ spec:
 	- name: revision
 	  value: master
 	- name: url
-	  value: https://github.com/remkohdev/spring-boot-app
+	  value: https://github.com/remkohdev/devops101

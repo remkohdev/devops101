@@ -5,6 +5,6 @@ metadata:
 spec:
   params:
     - name: repository
-      value: "https://github.com/remkohdev/spring-boot-app"
+      value: "https://github.com/remkohdev/devops101"
     - name: branch
       value: "master"

@@ -11,7 +11,7 @@ spec:
 		  - name: revision
 		    value: master
 		  - name: url
-		    value: https://github.com/remkohdev/spring-boot-app
+		    value: https://github.com/remkohdev/devops101
   resourcetemplates:
     - apiVersion: tekton.dev/v1alpha1
       kind: PipelineRun
